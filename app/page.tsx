@@ -7,12 +7,17 @@ import FeaturesSection from "../components/FeaturesSection";
 export default function Home() {
   return (
     <>
-      {/* Header */}
-  <Header />
-  <HeroSection />
-  <AboutSection />
-  <ServiceCardsSection />
-  <FeaturesSection />
+      <Header />
+      <HeroSection
+        backgroundImage="/main-page-background.jpg"
+        title={<><span className="font-bold">GMKAgent</span>は、<br />あなたの挑戦を支える、<br />イギリス専門のエージェントです。</>}
+        subtitle={undefined}
+        ctaHref="/counseling"
+        ctaText="無料カウンセリング"
+      />
+      <AboutSection />
+      <ServiceCardsSection />
+      <FeaturesSection />
     </>
   );
 }
