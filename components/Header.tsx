@@ -1,16 +1,18 @@
+import Link from "next/dist/client/link";
+
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-[#f7f7f7] w-full border-b border-gray-200">
       <div className="max-w-screen-2xl mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
-        <a href="/" className="text-3xl font-bold tracking-tight text-black">GMK AGENT</a>
+        <Link href="/" className="text-3xl font-bold tracking-tight text-black">GMK AGENT</Link>
 
         {/* Navigation */}
         <nav className="flex-1 flex justify-center gap-8 text-base">
-          <a href="/" className="border-b-2 border-black pb-1 font-normal">ホーム</a>
-          <a href="/language-school" className="hover:underline">語学学校紹介</a>
-          <a href="/home-stay" className="hover:underline">ホームステイ</a>
-          <a href="/blog" className="hover:underline">ブログ記事</a>
+          <Link href="/" className="border-b-2 border-black pb-1 font-normal">ホーム</Link>
+          <Link href="/language-school" className="hover:underline">語学学校紹介</Link>
+          <Link href="/home-stay" className="hover:underline">ホームステイ</Link>
+          <Link href="/blog" className="hover:underline">ブログ記事</Link>
         </nav>
 
         {/* Socials & CTA */}

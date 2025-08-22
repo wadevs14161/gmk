@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 type HeroSectionProps = {
   backgroundImage?: string;
   title: React.ReactNode;
@@ -19,11 +21,14 @@ export default function HeroSection({
 }: HeroSectionProps) {
   return (
     <section className="relative w-full h-[420px] md:h-[520px] flex items-center justify-center overflow-hidden">
-      <img
-        src={backgroundImage}
-        alt="Hero"
-        className="absolute inset-0 w-full h-full object-cover object-center z-0"
-      />
+        <Image
+          src={backgroundImage}
+          alt="Hero"
+          fill
+          className="absolute inset-0 w-full h-full object-cover object-center z-0"
+          priority
+          sizes="100vw"
+        />
       <div className={`relative z-10 ${contentClassName}`}>
         {subtitle && (
           <span className="text-white text-lg md:text-2xl mb-2 drop-shadow-lg">{subtitle}</span>
