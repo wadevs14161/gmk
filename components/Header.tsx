@@ -1,6 +1,9 @@
+"use client";
 import Link from "next/dist/client/link";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
+  const pathname = usePathname();
   return (
     <header className="sticky top-0 z-50 bg-[#f7f7f7] w-full border-b border-gray-200">
       <div className="max-w-screen-2xl mx-auto flex items-center justify-between px-6 py-4">
@@ -9,10 +12,38 @@ export default function Header() {
 
         {/* Navigation */}
         <nav className="flex-1 flex justify-center gap-8 text-base">
-          <Link href="/" className="border-b-2 border-black pb-1 font-normal">ホーム</Link>
-          <Link href="/language-school" className="hover:underline">語学学校紹介</Link>
-          <Link href="/home-stay" className="hover:underline">ホームステイ</Link>
-          <Link href="/blog" className="hover:underline">ブログ記事</Link>
+          <Link
+            href="/"
+            className={
+              pathname === "/"
+                ? "border-b-2 border-black pb-1 font-normal"
+                : "hover:underline"
+            }
+          >ホーム</Link>
+          <Link
+            href="/language-school"
+            className={
+              pathname.startsWith("/language-school")
+                ? "border-b-2 border-black pb-1 font-normal"
+                : "hover:underline"
+            }
+          >語学学校紹介</Link>
+          <Link
+            href="/home-stay"
+            className={
+              pathname.startsWith("/home-stay")
+                ? "border-b-2 border-black pb-1 font-normal"
+                : "hover:underline"
+            }
+          >ホームステイ</Link>
+          <Link
+            href="/blog"
+            className={
+              pathname.startsWith("/blog")
+                ? "border-b-2 border-black pb-1 font-normal"
+                : "hover:underline"
+            }
+          >ブログ記事</Link>
         </nav>
 
         {/* Socials & CTA */}
