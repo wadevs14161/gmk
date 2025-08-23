@@ -42,7 +42,7 @@ export default function FeaturesSection() {
         <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
           <div className="flex-1 flex justify-center">
             <a
-              href="https://calendly.com/gmkagent/consulting"
+              href="/consulting-form"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center bg-[#ffe066] rounded-xl px-8 py-8 shadow-lg border-2 border-[#ffe066] hover:bg-yellow-300 transition-all w-full md:w-auto"
@@ -70,7 +70,7 @@ export default function FeaturesSection() {
           ))}
         </div>
       </div>
-    <Footer />
+  {/* <Footer /> removed to prevent duplicate footers on main page */}
     </section>
   );
 }
