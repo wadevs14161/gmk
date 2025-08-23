@@ -1,8 +1,54 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 
 export default function ConsultingForm() {
+  const [status, setStatus] = useState<'idle'|'success'|'error'>('idle');
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus('idle');
+    setError(null);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const data: any = {};
+    formData.forEach((value, key) => {
+      if (data[key]) {
+        if (Array.isArray(data[key])) {
+          data[key].push(value);
+        } else {
+          data[key] = [data[key], value];
+        }
+      } else {
+        data[key] = value;
+      }
+    });
+    // topics: ensure array for checkboxes
+    if (formData.getAll('topics').length > 0) {
+      data.topics = formData.getAll('topics');
+    }
+    try {
+      const res = await fetch('/api/consulting-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        setStatus('success');
+        form.reset();
+      } else {
+        const result = await res.json();
+        setError(result.error || '送信に失敗しました');
+        setStatus('error');
+      }
+    } catch (err) {
+      setError('送信に失敗しました');
+      setStatus('error');
+    }
+  }
+
   return (
-    <form className="space-y-8 bg-white rounded-xl shadow p-8">
+    <form className="space-y-8 bg-white rounded-xl shadow p-8" onSubmit={handleSubmit}>
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">GMK AGENT カウンセリング予約</h2>
       {/* お名前 */}
       <div>
@@ -98,7 +144,15 @@ export default function ConsultingForm() {
       </div>
       {/* Submit */}
       <div className="pt-4">
-        <button type="submit" className="w-full py-3 rounded-full bg-[#B6FF8A] text-black font-bold text-lg shadow hover:bg-[#a0e86e] transition">送信</button>
+        <button type="submit" className="w-full py-3 rounded-full bg-[#B6FF8A] text-black font-bold text-lg shadow hover:bg-[#a0e86e] transition" disabled={status === 'success'}>
+          {status === 'success' ? '送信完了しました' : '送信'}
+        </button>
+        {status === 'error' && (
+          <div className="text-red-600 text-center mt-2">{error}</div>
+        )}
+        {status === 'success' && (
+          <div className="text-green-700 text-center mt-2">送信ありがとうございます！</div>
+        )}
       </div>
     </form>
   );
