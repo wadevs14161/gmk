@@ -11,7 +11,7 @@ export default function ConsultingForm() {
     setError(null);
     const form = e.currentTarget;
     const formData = new FormData(form);
-    const data: any = {};
+  const data: Record<string, FormDataEntryValue | FormDataEntryValue[]> = {};
     formData.forEach((value, key) => {
       if (data[key]) {
         if (Array.isArray(data[key])) {
@@ -41,7 +41,7 @@ export default function ConsultingForm() {
         setError(result.error || '送信に失敗しました');
         setStatus('error');
       }
-    } catch (err) {
+    } catch {
       setError('送信に失敗しました');
       setStatus('error');
     }

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 const services = [
   {
     img: "/main-page-cards-language-school.png",
@@ -32,12 +33,14 @@ export default function ServiceCardsSection() {
             className="flex flex-col items-center text-center h-full bg-white"
             style={{ minHeight: 560 }}
           >
-            <img
-              src={s.img}
-              alt={s.title}
-              className="rounded-2xl w-full h-72 object-cover mb-6"
-              style={{ maxWidth: 340 }}
-            />
+              <Image
+                src={s.img}
+                alt={s.title}
+                width={400}
+                height={160}
+                className="rounded-2xl w-full h-72 object-cover mb-6"
+                style={{ maxWidth: 340 }}
+              />
             <h3 className="text-xl font-bold mb-2 underline decoration-black decoration-2 underline-offset-4">{s.title}</h3>
             <p className="text-base text-black mb-8 whitespace-pre-line flex-1">{s.desc}</p>
             <div className="mt-auto w-full flex justify-center">
