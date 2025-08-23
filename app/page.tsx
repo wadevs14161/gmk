@@ -12,7 +12,7 @@ export default function Home() {
         backgroundImage="/main-page-background.jpg"
         title={<><span className="font-bold">GMKAgent</span>は、<br />あなたの挑戦を支える、<br />イギリス専門のエージェントです。</>}
         subtitle={undefined}
-        ctaHref="/counseling"
+        ctaHref="/consulting-form"
         ctaText="無料カウンセリング"
       />
       <AboutSection />

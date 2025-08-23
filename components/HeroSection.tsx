@@ -14,8 +14,8 @@ export default function HeroSection({
   backgroundImage = "/main-page-background.jpg",
   title,
   subtitle,
-  ctaHref = "/counseling",
-  ctaText = "無料カウンセリング",
+  ctaHref,
+  ctaText,
   overlayClassName = "bg-black/20",
   contentClassName = "flex flex-col items-start max-w-4xl px-8"
 }: HeroSectionProps) {
@@ -34,14 +34,14 @@ export default function HeroSection({
           <span className="text-white text-lg md:text-2xl mb-2 drop-shadow-lg">{subtitle}</span>
         )}
         <h1 className="text-white text-4xl md:text-7xl font-bold leading-tight drop-shadow-lg mb-8">{title}</h1>
-        {ctaHref && ctaText && (
+        {ctaHref && ctaText ? (
           <a
             href={ctaHref}
             className="mt-2 px-8 py-3 rounded-full bg-[#B6FF8A] text-black font-medium text-lg shadow hover:bg-[#a0e86e] transition"
           >
             {ctaText}
           </a>
-        )}
+        ) : null}
       </div>
       <div className={`absolute inset-0 ${overlayClassName}`} aria-hidden="true" />
     </section>

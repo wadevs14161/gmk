@@ -57,7 +57,7 @@ export default function Header() {
           <a href="https://lin.ee/ktmwS1v" target="_blank" rel="noopener" aria-label="LINE">
             <svg width="22" height="22" fill="none" viewBox="0 0 22 22"><rect x="3" y="3" width="16" height="16" rx="8" stroke="#171717" strokeWidth="2"/><path d="M7 11h8M7 11l2-2m-2 2l2 2" stroke="#171717" strokeWidth="2"/></svg>
           </a>
-          <a href="/counseling" className="ml-4 px-6 py-2 rounded-full bg-[#B6FF8A] text-black font-medium shadow hover:bg-[#a0e86e] transition">無料カウンセリング</a>
+          <a href="/consulting-form" className="ml-4 px-6 py-2 rounded-full bg-[#B6FF8A] text-black font-medium shadow hover:bg-[#a0e86e] transition">無料カウンセリング</a>
         </div>
       </div>
     </header>
